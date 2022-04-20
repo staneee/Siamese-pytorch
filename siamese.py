@@ -16,7 +16,7 @@ class Siamese(object):
         #   使用自己训练好的模型进行预测一定要修改model_path
         #   model_path指向logs文件夹下的权值文件
         #-----------------------------------------------------#
-        "model_path"    : 'model_data/Omniglot_vgg.pth',
+        "model_path"    : 'logs/ep031-loss0.026-val_loss0.028.pth',
         #-----------------------------------------------------#
         #   输入图片的大小。
         #-----------------------------------------------------#
@@ -110,7 +110,7 @@ class Siamese(object):
             #---------------------------------------------------#
             #   获得预测结果，output输出为概率
             #---------------------------------------------------#
-            output = self.net([photo_1, photo_2])[0]
+            output = self.net(photo_1, photo_2)[0]
             output = torch.nn.Sigmoid()(output)
 
         plt.subplot(1, 2, 1)
