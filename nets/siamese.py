@@ -26,8 +26,10 @@ class Siamese(nn.Module):
         self.fully_connect1 = torch.nn.Linear(flat_shape, 512)
         self.fully_connect2 = torch.nn.Linear(512, 1)
 
-    def forward(self, x):
-        x1, x2 = x
+    def forward(self, img1,img2):
+        # x1, x2 = x
+        x1=img1
+        x2=img2
         #------------------------------------------#
         #   我们将两个输入传入到主干特征提取网络
         #------------------------------------------#
