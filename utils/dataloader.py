@@ -16,9 +16,10 @@ class SiameseDataset(Dataset):
         super(SiameseDataset, self).__init__()
 
         self.dataset_path   = dataset_path
-        self.image_height   = input_shape[0]
-        self.image_width    = input_shape[1]
-        self.channel        = input_shape[2]
+
+        self.channel        = input_shape[0]    
+        self.image_width    = input_shape[1]            
+        self.image_height   = input_shape[2]
         
         self.train_lines    = []
         self.train_labels   = []
@@ -98,7 +99,8 @@ class SiameseDataset(Dataset):
         if self.channel == 1:
             image = image.convert("RGB")
 
-        h, w = input_shape
+        w=input_shape[1]
+        h=input_shape[2]
         #------------------------------------------#
         #   图像大小调整
         #------------------------------------------#

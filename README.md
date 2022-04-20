@@ -43,7 +43,7 @@ img/Angelic_02.png
 ```python
 _defaults = {
     "model_path": 'model_data/Omniglot_vgg.pth',
-    "input_shape" : (105, 105, 3),
+    "input_shape" : (3, 105, 105),
 }
 ```
 3. 运行predict.py，输入   

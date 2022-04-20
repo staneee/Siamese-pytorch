@@ -18,11 +18,11 @@ def get_img_output_length(width, height):
 class Siamese(nn.Module):
     def __init__(self, input_shape, pretrained=False):
         super(Siamese, self).__init__()
-        self.vgg = VGG16(pretrained, input_shape[-1])
+        self.vgg = VGG16(pretrained, input_shape[0])
         del self.vgg.avgpool
         del self.vgg.classifier
         
-        flat_shape = 512 * get_img_output_length(input_shape[1], input_shape[0])
+        flat_shape = 512 * get_img_output_length(input_shape[1], input_shape[2])
         self.fully_connect1 = torch.nn.Linear(flat_shape, 512)
         self.fully_connect2 = torch.nn.Linear(512, 1)
 

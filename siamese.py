@@ -20,7 +20,7 @@ class Siamese(object):
         #-----------------------------------------------------#
         #   输入图片的大小。
         #-----------------------------------------------------#
-        "input_shape"   : (105, 105, 3),
+        "input_shape"   : (3, 105, 105),
         #-------------------------------#
         #   是否使用Cuda
         #   没有GPU可以设置成False
@@ -72,7 +72,7 @@ class Siamese(object):
         image       = image.resize((nw,nh), Image.BICUBIC)
         new_image   = Image.new('RGB', size, (128,128,128))
         new_image.paste(image, ((w-nw)//2, (h-nh)//2))
-        if self.input_shape[-1]==1:
+        if self.input_shape[0]==1:
             new_image = new_image.convert("L")
         return new_image
         
@@ -83,8 +83,8 @@ class Siamese(object):
         #---------------------------------------------------#
         #   对输入图像进行不失真的resize
         #---------------------------------------------------#
-        image_1 = self.letterbox_image(image_1,[self.input_shape[1],self.input_shape[0]])
-        image_2 = self.letterbox_image(image_2,[self.input_shape[1],self.input_shape[0]])
+        image_1 = self.letterbox_image(image_1,[self.input_shape[1],self.input_shape[2]])
+        image_2 = self.letterbox_image(image_2,[self.input_shape[1],self.input_shape[2]])
         
         #---------------------------------------------------#
         #   对输入图像进行归一化
@@ -92,7 +92,7 @@ class Siamese(object):
         photo_1 = np.asarray(image_1).astype(np.float64) / 255
         photo_2 = np.asarray(image_2).astype(np.float64) / 255
 
-        if self.input_shape[-1]==1:
+        if self.input_shape[0]==1:
             photo_1 = np.expand_dims(photo_1, -1)
             photo_2 = np.expand_dims(photo_2, -1)
 
