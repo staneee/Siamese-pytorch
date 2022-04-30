@@ -13,6 +13,7 @@ if __name__ == "__main__":
 
     modelPath = "./logs/ep031-loss0.026-val_loss0.028.pth"
     savePath = "./model_data/best.onnx"
+    savePath = "C:/Users/yihan/Desktop/xuan_wu/models/siamese.onnx"
 
     imageChannel=3
     imageWidth=105
@@ -46,9 +47,9 @@ if __name__ == "__main__":
                       savePath,
                       input_names=input_names,
                       output_names=output_names,
-                      verbose=True,
-                      export_params=True,                      
-                      keep_initializers_as_inputs=True
+                      export_params=True 
+                    #   verbose=True,                                        
+                    #   keep_initializers_as_inputs=True
                       )    
     
     

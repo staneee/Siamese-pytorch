@@ -111,7 +111,11 @@ class Siamese(object):
             #   获得预测结果，output输出为概率
             #---------------------------------------------------#
             output = self.net(photo_1, photo_2)[0]
+            print(output)
+            print(output[0])
             output = torch.nn.Sigmoid()(output)
+            print(output)
+            print(output[0])            
 
         plt.subplot(1, 2, 1)
         plt.imshow(np.array(image_1))
